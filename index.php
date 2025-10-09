@@ -10,8 +10,8 @@
     <div class="container">
         <h1 id="title">Welcome to PTB Blog - Connect you to the world</h1>
         <div>
-            <a href="./static/login.php" id="login">Login</a>
-            <a href="./static/signup.php" id="signup">Sign Up</a>
+            <a href="./static/page/login.php" id="login">Login</a>
+            <a href="./static/page/signup.php" id="signup">Sign Up</a>
         </div>
     </div>
 </body>

@@ -9,21 +9,18 @@ form.addEventListener("submit", async (event) => {
 
     try {
         const formData = new FormData(form);
-        const response = await fetch("../src/auth/signuphandler.php", {
+        const response = await fetch("../../src/auth/signuphandler.php", {
             method: "POST",
             body: formData,
         });
 
-        if (!response.ok) {
-            throw new Error("Error when signing up");
-        }
+        if (!response.ok) throw new Error("Error when signing up");
         
         const data = await response.json();
         if (data["success"] === false) {
             errorEle.innerText = data["msg"];
-        }
-        else {
-            window.location.href = "../static/login.php";
+        } else {
+            window.location.href = "./login.php";
         }
     } catch (error) {
         errorEle.innerText = error;

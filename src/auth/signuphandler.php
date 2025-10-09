@@ -20,12 +20,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     header("Content-Type: application/json");
     $response = [
-        "success" => true,
+        "success" => false,
         "msg" => ""
     ];
 
     if (empty($username) || empty($pwd) || empty($email)) {
-        $response["success"] = false;
         $response["msg"] = "Please fill in all blanks";
         echo json_encode($response);
         exit;
@@ -35,21 +34,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pdo = dbConnect();
 
         if (isUserExist($pdo, $username)) {
-            $response["success"] = false;
             $response["msg"] = "Username has been used";
             echo json_encode($response);
             exit;
         }
 
         if (isEmailExist($pdo, $email)) {
-            $response["success"] = false;
             $response["msg"] = "Email has been used";
             echo json_encode($response);
             exit;
         }
 
         if (!isStrongPassword($pwd)) {
-            $response["success"] = false;
             $response["msg"] = "Password is not strong enough";
             echo json_encode($response);
             exit;
@@ -61,11 +57,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $query = $pdo->prepare("insert into users (username, pwd, email, created) values (?, ?, ?, ?);");
         $query->execute([$username, $hashedPwd, $email, $now]);
 
+        $response["success"] = true;
         $response["msg"] = "Create account successfully";
         echo json_encode($response);
         exit;
     } catch (Exception $error) {
-        $response["success"] = false;
         $response["msg"] = $error->getMessage();
         echo json_encode($response);
         exit;
