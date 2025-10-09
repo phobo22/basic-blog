@@ -8,21 +8,18 @@ form.addEventListener("submit", async (e) => {
 
     try {
         const formData = new FormData(form);
-        const response = await fetch("../src/auth/loginhandler.php", {
+        const response = await fetch("../../src/auth/loginhandler.php", {
             method: "POST",
             body: formData,
         })
 
-        if (!response.ok) {
-            throw new Error("Error when login");
-        }
+        if (!response.ok) throw new Error("Error when login");
 
         const data = await response.json();
         if (data["success"] === false) {
             errorEle.innerText = data["msg"];
-        }
-        else {
-            window.location.href = "../src/dashboard.php";
+        } else {
+            window.location.href = "./dashboard.php";
         }
     } catch (error) {
         errorEle.innerText = error;

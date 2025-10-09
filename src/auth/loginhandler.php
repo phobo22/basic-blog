@@ -1,26 +1,51 @@
 <?php
 
+session_start();
+
 require_once "../../config/database.php";
 require_once "../../helper/functions.php";
-
-
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = $_POST["username"];
     $pwd = $_POST["password"];
 
+    header("Content-Type: application/json");
     $response = [
-        "success" => true,
+        "success" => false,
         "msg" => ""
     ];
 
     if (empty($username) || empty($pwd)) {
-        $response["success"] = false;
         $response["msg"] = "Please fill in all blanks";
         echo json_encode($response);
         exit;
     }
 
+    try {
+        $pdo = dbConnect();
+        $users = getUser($pdo, $username);
+
+        if (count($users) !== 0) $user = $users[0];
+        if (count($users) === 0 || password_verify($pwd, $user["pwd"]) === false) {
+            $response["msg"] = "Username or password is incorrect";
+            echo json_encode($response);
+            exit;
+        }
+
+        $response["success"] = true;
+        $response["msg"] = "Login successfully";
+
+        $_SESSION["userid"] = $user["id"];
+        $_SESSION["username"] = $user["username"];
+        $_SESSION["email"] = $user["email"];
+
+        echo json_encode($response);
+        exit;
+    } catch (Exception $error) {
+        $response["msg"] = $error->getMessage();
+        echo json_encode($response);
+        exit;
+    }
 }
 
 ?>
