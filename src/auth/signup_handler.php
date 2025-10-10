@@ -1,17 +1,8 @@
 <?php
 
-require_once "../../config/database.php";
-require_once "../../helper/functions.php";
+require_once __DIR__ . "/../../config/database.php";
+require_once __DIR__ . "/../../helper/functions.php";
 
-
-function isStrongPassword($password) {
-    if (strlen($password) < 8) return false;
-    if (!preg_match("/[A-Z]/", $password)) return false;
-    if (!preg_match("/[a-z]/", $password)) return false;
-    if (!preg_match("/\d/", $password)) return false;
-    if (!preg_match("/[^A-Za-z0-9]/", $password)) return false;
-    return true;
-}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];

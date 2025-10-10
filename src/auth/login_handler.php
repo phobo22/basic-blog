@@ -2,8 +2,8 @@
 
 session_start();
 
-require_once "../../config/database.php";
-require_once "../../helper/functions.php";
+require_once __DIR__ . "/../../config/database.php";
+require_once __DIR__ . "/../../helper/functions.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = $_POST["username"];
@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     try {
         $pdo = dbConnect();
-        $users = getUser($pdo, $username);
+        $users = getUserWithUsername($pdo, $username);
 
         if (count($users) !== 0) $user = $users[0];
         if (count($users) === 0 || password_verify($pwd, $user["pwd"]) === false) {
