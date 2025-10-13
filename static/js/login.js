@@ -8,7 +8,7 @@ form.addEventListener("submit", async (e) => {
 
     try {
         const formData = new FormData(form);
-        const response = await fetch("../../src/auth/loginhandler.php", {
+        const response = await fetch("../../src/auth/login_handler.php", {
             method: "POST",
             body: formData,
         })

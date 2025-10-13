@@ -9,7 +9,7 @@ form.addEventListener("submit", async (event) => {
 
     try {
         const formData = new FormData(form);
-        const response = await fetch("../../src/auth/signuphandler.php", {
+        const response = await fetch("../../src/auth/signup_handler.php", {
             method: "POST",
             body: formData,
         });
