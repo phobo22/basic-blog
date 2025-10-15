@@ -1,0 +1,159 @@
+.content {
+    background-color: rgb(94, 91, 91);
+}
+
+.form-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+#add-task-form, #update-task-form {
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 30px;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    width: 700px;
+    height: 380px;
+    background-color: burlywood;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+#add-task-form *, #update-task-form * {
+    margin: 5px;
+}
+
+#add-title, #task-title {
+    font-size: 40px;
+    color: white;
+}
+
+#task-title {
+    margin-top: 70px;
+}
+
+label {
+    font-size: 20px;
+}
+
+#taskTitle {
+    width: 600px;
+}
+
+input {
+    height: 30px;
+    
+}
+
+input, textarea {
+    background-color: cornflowerblue;
+    color: rgb(238, 215, 215);
+    border-radius: 8px;
+    font-size: 20px;
+}
+
+#add-btn {
+    width: 100px;
+    height: 50px;
+    border: none;
+    border-radius: 8px;
+    background-color: coral;
+    color: rgb(231, 224, 224);
+    font-size: 28px;
+    transition: color 0.3s;
+}
+
+#add-btn:hover {
+    background-color: rgb(188, 98, 65);
+    color: rgb(255, 255, 255);
+}
+
+#add-msg-display, #update-msg-display {
+    font-size: 25px;
+    margin-left: 50px;
+}
+
+.tasks-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.task-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid black;
+    width: 650px;
+    height: 180px;
+    background-color: darkkhaki;
+    font-size: 25px;
+    border-radius: 10px;
+    padding: 15px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.task-container * {
+    margin-left: 8px;
+}
+
+span {
+    color:rgb(179, 36, 36);
+    font-weight: bold;
+}
+
+p {
+    color:rgb(161, 56, 161);
+}
+
+.update-btn, .delete-btn {
+    width: 80px;
+    height: 30px;
+    font-size: 18px;
+    border-radius: 4px;
+    background-color: goldenrod;
+    transition: color 0.3s;
+}
+
+.update-btn:hover, .delete-btn:hover {
+    background-color: rgb(141, 112, 38);
+    color: rgb(193, 190, 190);
+}
+
+#task-msg-display {
+    font-size: 50px;
+    color:rgb(224, 61, 94);
+    margin-top: 80px;
+    margin-left: 50px;
+}
+
+.discard-btn, #submit-update-btn {
+    width: 100px;
+    height: 50px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgb(223, 51, 46);
+    color: white;
+    font-size: 22px;
+    transition: color 0.3s;
+}
+
+#submit-update-btn {
+    background-color: rgb(115, 224, 5);
+    color: rgb(231, 230, 230);
+}
+
+.discard-btn:hover {
+    background-color: rgb(188, 98, 65);
+    color: rgb(255, 255, 255);
+}
+
+#submit-update-btn:hover {
+    background-color: rgb(71, 130, 12);
+    color: rgb(255, 255, 255);
+}

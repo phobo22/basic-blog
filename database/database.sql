@@ -18,3 +18,13 @@ create table password_reset (
     created_at datetime default CURRENT_TIMESTAMP,
     foreign key (user_id) references users (id)
 );
+
+create table tasks (
+	id INT primary key auto_increment,
+    user_id INT not null,
+    title VARCHAR(50) not null,
+    description VARCHAR(100) not null,
+    start_date DATE not null,
+    end_date DATE not null,
+    foreign key (user_id) references users (id)
+);
