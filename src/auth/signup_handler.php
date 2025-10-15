@@ -3,7 +3,6 @@
 require_once __DIR__ . "/../../config/database.php";
 require_once __DIR__ . "/../../helper/functions.php";
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $pwd = $_POST["password"];
