@@ -21,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     }
 
+    // check password is strong enough or not
     if (!isStrongPassword($newpwd)) {
         $response["msg"] = "New password is not strong enough";
         echo json_encode($response);
@@ -30,10 +31,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     try {
         $pdo = dbConnect();
 
+        // get data from database
         $checkPwdQuery = $pdo->prepare("select pwd from users where id = :userid");
         $checkPwdQuery->execute([":userid" => $_SESSION["userid"],]);
         $oldHashedPwd = $checkPwdQuery->fetch(PDO::FETCH_ASSOC)["pwd"];
 
+        // check if old password is match with new or not
         if (password_verify($oldpwd, $oldHashedPwd)) {
             $newHashedPwd = password_hash($newpwd, PASSWORD_BCRYPT);
             $updateQuery = $pdo->prepare("update users set pwd = :newHashedPwd where id = :userid");

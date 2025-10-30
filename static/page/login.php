@@ -13,7 +13,10 @@
         <div class="content">
             <input type="text" name="username" id="username" placeholder="Username">
             <input type="password" name="password" id="password" placeholder="Password">
-            <a href="./recovery_pwd.php">Forgot Password ?</a>
+            <div class="btn-controller">
+                <a href="./recovery_pwd.php">Forgot Password ?</a>
+                <a href="./signup.php">Do not have an account?</a>
+            </div>
         </div>
         <button id="login-btn" name="login">Log In</button>
     </form>

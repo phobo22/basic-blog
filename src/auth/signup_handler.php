@@ -14,6 +14,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         "msg" => ""
     ];
 
+
+    // if user empty blank
     if (empty($username) || empty($pwd) || empty($email)) {
         $response["msg"] = "Please fill in all blanks";
         echo json_encode($response);
@@ -23,24 +25,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         $pdo = dbConnect();
 
+        // check user exists or not
         if (isUserExist($pdo, $username)) {
             $response["msg"] = "Username has been used";
             echo json_encode($response);
             exit;
         }
 
+        // check email exists or not
         if (isEmailExist($pdo, $email)) {
             $response["msg"] = "Email has been used";
             echo json_encode($response);
             exit;
         }
 
+        // check password strong enough or not
         if (!isStrongPassword($pwd)) {
             $response["msg"] = "Password is not strong enough";
             echo json_encode($response);
             exit;
         }
         
+        // hash user password input
         $hashedPwd = password_hash($pwd, PASSWORD_BCRYPT);
         $now = date("Y-m-d h:i:s");
 

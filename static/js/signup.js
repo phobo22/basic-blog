@@ -19,6 +19,7 @@ form.addEventListener("submit", async (event) => {
         const data = await response.json();
         if (data["success"] === false) {
             errorEle.innerText = data["msg"];
+            errorEle.style.color = "rgba(245, 124, 124, 1)";
         } else {
             window.location.href = "./login.php";
         }

@@ -14,6 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         "msg" => ""
     ];
 
+    // if user empty a blank
     if (empty($username) || empty($pwd)) {
         $response["msg"] = "Please fill in all blanks";
         echo json_encode($response);
@@ -22,9 +23,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     try {
         $pdo = dbConnect();
+
+        // get user info
         $users = getUserWithUsername($pdo, $username);
 
         if (count($users) !== 0) $user = $users[0];
+
+        // if user is not exist or password is not correct
         if (count($users) === 0 || password_verify($pwd, $user["pwd"]) === false) {
             $response["msg"] = "Username or password is incorrect";
             echo json_encode($response);
@@ -34,6 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $response["success"] = true;
         $response["msg"] = "Login successfully";
 
+        // set sessions
         $_SESSION["userid"] = $user["id"];
         $_SESSION["username"] = $user["username"];
         $_SESSION["email"] = $user["email"];

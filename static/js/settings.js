@@ -3,6 +3,7 @@ const emailForm = document.getElementById("email-form");
 const pwdMsgDisplay = document.getElementById("pwd-msg-display");
 const emailMsgDisplay = document.getElementById("email-msg-display");
 
+// change password form submit
 pwdForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
@@ -28,6 +29,7 @@ pwdForm.addEventListener("submit", async (event) => {
     }
 })
 
+// change email form submit
 emailForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
