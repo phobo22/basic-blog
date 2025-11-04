@@ -26,7 +26,8 @@ try {
     $pdo = dbConnect();
     $selectQuery = $pdo->prepare("select u.username, c.commented_at, c.content 
                                 from users u join comments c on u.id = c.user_id 
-                                where c.article_id = :id;");
+                                where c.article_id = :id 
+                                order by c.commented_at desc;");
     $selectQuery->execute([":id" => $articleId,]);
     $comments = $selectQuery->fetchAll(PDO::FETCH_ASSOC);
     

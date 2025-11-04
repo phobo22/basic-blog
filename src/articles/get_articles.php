@@ -24,7 +24,8 @@ try {
     $current_3_day = date('Y-m-d H:i:s', strtotime("-3 day"));
     $selectQuery = $pdo->prepare("select u.username, a.id, a.user_id, a.posted_at, a.text_content, a.file_name 
                                 from users u join articles a on u.id = a.user_id 
-                                where a.posted_at > :time;");
+                                where a.posted_at > :time 
+                                order by a.posted_at desc;");
     $selectQuery->execute([":time" => $current_3_day,]);
     $articles = $selectQuery->fetchAll(PDO::FETCH_ASSOC);
 

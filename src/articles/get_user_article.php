@@ -21,7 +21,8 @@ try {
     $pdo = dbConnect();
     $selectQuery = $pdo->prepare("select u.username, a.id, a.user_id, a.posted_at, a.text_content, a.file_name 
                                 from articles a join users u on a.user_id = u.id 
-                                where a.user_id = :id;");
+                                where a.user_id = :id 
+                                order by a.posted_at desc;");
     $selectQuery->execute([":id" => $_SESSION["userid"],]);
     $articles = $selectQuery->fetchAll(PDO::FETCH_ASSOC);
 

@@ -15,6 +15,10 @@ const cmtErrorDisplay = document.querySelector(".cmt-error-container");
 let cmtDisplay = document.querySelector(".msg-container");
 let addCmtForm = document.querySelector(".cmt-container");
 
+// async function getAllLikeArticles(userid) {
+    
+// }
+
 // get likes data from database
 async function getLikesInfo(articleId) {
     const response = await fetch(`../../src/articles/user_liked.php?articleId=${articleId}`, {
@@ -123,8 +127,7 @@ async function displayAllArticles() {
             if (articles.length === 0) {
                 articleErrorDisplay.innerText = "No post in the last 3 days";
             } else {
-                // sort the articles array by posted days and display single by single
-                articles.sort((a, b) => new Date(b.posted_at) - new Date(a.posted_at));
+                //const likeResponse = await getLikesInfo();
                 for (const article of articles) {
                     await displayArticle(article);
                 }
@@ -170,8 +173,6 @@ async function displayAllComments(articleId) {
             if (comments.length === 0) {
                 cmtErrorDisplay.innerText = "No one has commented about this article";
             } else {
-                // sort the comments array by commented day and display single by single
-                comments.sort((a, b) => new Date(b.commented_at) - new Date(a.commented_at));
                 for (const comment of comments) {
                     displayComment(comment);
                 }

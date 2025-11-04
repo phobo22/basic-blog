@@ -125,7 +125,6 @@ async function displayAllArticles() {
             if (articles.length === 0) {
                 articleErrorDisplay.innerText = "You have not have any articles yet";
             } else {
-                articles.sort((a, b) => new Date(b.posted_at) - new Date(a.posted_at));
                 for (const article of articles) {
                     await displayArticle(article);
                 }
@@ -170,7 +169,6 @@ async function displayAllComments(articleId) {
             if (comments.length === 0) {
                 cmtErrorDisplay.innerText = "No one has commented about this article";
             } else {
-                comments.sort((a, b) => new Date(b.commented_at) - new Date(a.commented_at));
                 for (const comment of comments) {
                     displayComment(comment);
                 }
