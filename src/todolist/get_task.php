@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
         $pdo = dbConnect();
         
         if (!isset($_GET["id"])) {
-            $selectQuery = $pdo->prepare("select * from tasks where user_id = :userid;");
+            $selectQuery = $pdo->prepare("select * from tasks where user_id = :userid order by end_date asc;");
             $selectQuery->execute([":userid" => $_SESSION["userid"]],);
             $tasks = $selectQuery->fetchAll(PDO::FETCH_ASSOC);
             $response["data"] = $tasks;

@@ -112,6 +112,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         try {
             $pdo = dbConnect();
+
+            // hash new password
             $newHashedPwd = password_hash($newPwd, PASSWORD_BCRYPT);
             $hashToken = hash("sha256", $token);
 

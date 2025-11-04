@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/sidebar.css">
-    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/user_articles.css">
     <title>PTB Blog</title>
 </head>
 <body>
@@ -69,6 +69,6 @@
             </div>
         </div>
     </main>
-    <script src="../js/dashboard.js"></script>
+    <script src="../js/user_articles.js"></script>
 </body>
 </html>

@@ -14,18 +14,16 @@
 }
 
 .article-form {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     background-color: rgb(234, 209, 148);
     border-radius: 20px;
     padding: 10px;
-    width: 700px;
 }
 
 #add-post {
     display: flex;
     flex-direction: column;
-    width: 680px;
-    padding: 5px;
+    width: 720px;
 }
 
 #add-post #text {
@@ -83,7 +81,7 @@
 }
 
 .article-wrapper {
-    margin-left: 50px;
+    margin-left: 100px;
 }
 
 .article {
@@ -91,7 +89,7 @@
     word-wrap: break-word;     /* Break long words */
     overflow-wrap: break-word; /* Modern equivalent */
     white-space: normal;       /* Allow text to wrap */
-    width: 700px;
+    width: 750px;
     font-size: 25px;
     padding: 22px;
     border-radius: 30px;
@@ -141,7 +139,7 @@
     margin-left: 10px;
 }
 
-.like-img, .cmt-img, #close-cmt-btn {
+.like-img, .cmt-img, #close-cmt-btn, .delete-img {
     width: 100%;
     height: 100%;
 }
@@ -162,6 +160,7 @@
     background-color: rgb(207, 176, 138);
     border: none;
 }
+
 
 #cmt-btn:hover, #like-btn:hover {
     width: 6%;
@@ -193,12 +192,17 @@
     width: 470px;
 }
 
-#close-btn {
+#delete-post-btn {
+    background-color: rgb(207, 176, 138);
+    border: none;
+}
+
+#close-btn, #delete-post-btn {
     width: 35px;
     height: 35px;
 }
 
-#close-btn:hover {
+#close-btn:hover, #delete-post-btn:hover {
     background-color: white;
     border-radius: 20px;
 }
@@ -276,44 +280,11 @@
     background-color: rgb(214, 209, 209);
 }
 
-@media (max-width: 1680px) {
-    .article-form {
-        width: 550px;
-    }
-
-    #add-post {
-        display: flex;
-        flex-direction: column;
-        width: 530px;
-        padding: 5px;
-    }
-
-    .article {
-        width: 550px;
-        font-size: 22px;
-        padding: 20px;
-    }
+.header {
+    display: flex;
+    justify-content: space-between;
 }
 
-@media (max-width: 1520px) {
-    .article-form {
-        width: 400px;
-    }
-
-    #add-post {
-        display: flex;
-        flex-direction: column;
-        width: 380px;
-        padding: 5px;
-    }
-
-    .article {
-        width: 400px;
-        font-size: 22px;
-        padding: 20px;
-    }
-
-    #like-btn, #cmt-btn {
-        height: 50%;
-    }
+#articles {
+    color: #39f0cc;
 }

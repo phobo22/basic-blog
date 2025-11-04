@@ -5,6 +5,7 @@ const taskMsgDisplay = document.getElementById("task-msg-display");
 const updateTaskForm = document.getElementById("update-task-form");
 let updateMsgForm;
 
+// detele a task
 async function deleteTask(taskId) {
     const response = await fetch(`../../src/todolist/delete_task.php?id=${taskId}`, {
         method: "DELETE",
@@ -16,6 +17,7 @@ async function deleteTask(taskId) {
     return response.json();
 }
 
+// get a task from database
 async function getTask(taskId) {
     const response = await fetch(`../../src/todolist/get_task.php?id=${taskId}`, {
         method: "GET",
@@ -28,6 +30,7 @@ async function getTask(taskId) {
     return response.json();
 }
 
+// display the update task form
 function displayUpdateTask(task) {
     updateTaskForm.innerHTML = `
         <input type="hidden" name="taskId" value=${task["id"]}>
@@ -50,6 +53,7 @@ async function updateTask(taskId) {
     displayUpdateTask(data);
 }
 
+// display all tasks
 async function displayTask() {
     const response = await fetch("../../src/todolist/get_task.php", {
         method: "GET",
@@ -86,6 +90,7 @@ async function displayTask() {
     }
 }
 
+// add task form submit
 addTaskForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     try {
@@ -117,6 +122,7 @@ addTaskForm.addEventListener("submit", async (e) => {
     }
 })
 
+// update task form submit
 updateTaskForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     try {
@@ -146,6 +152,7 @@ updateTaskForm.addEventListener("submit", async (e) => {
     }
 })
 
+// discard button in update task form click
 updateTaskForm.addEventListener("click", e => {
     if (e.target.classList.contains("discard-btn")) {
         updateTaskForm.innerHTML = "";
@@ -153,7 +160,9 @@ updateTaskForm.addEventListener("click", e => {
     }
 })
 
+// button in task display click
 taskDisplay.addEventListener("click", async (e) => {
+    // delete button click
     if (e.target.classList.contains("delete-btn")) {
         const taskId = e.target.value;
         try {
@@ -167,6 +176,7 @@ taskDisplay.addEventListener("click", async (e) => {
         }
     }
 
+    // update button click
     if (e.target.classList.contains("update-btn")) {
         const taskId = e.target.value;
         updateTask(taskId);
@@ -178,6 +188,3 @@ try {
 } catch (error) {
     taskMsgDisplay.innerText = error;
 }
-
-
-

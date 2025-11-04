@@ -18,7 +18,7 @@
 }
 
 h3 {
-    font-size: 25px;
+    font-size: 38px;
     margin-bottom: 10px;
 }
 
@@ -26,41 +26,54 @@ h3 {
     display: flex;
     flex-direction: column;
     background-color: burlywood;
-    width: 300px;
-    padding: 15px;
+    width: 450px;
+    padding: 20px;
     border-radius: 15px;
+}
+
+#email-form {
+    width: 520px;
 }
 
 label {
     color:rgb(255, 255, 255);
+    font-size: 22px;
+    color: black;
+    font-weight: bold;
 }
 
-#pwd-form * {
-    margin: 3px;
+#pwd-form *, #email-form * {
+    margin: 5px;
 }
 
 #pwd-btn, #email-btn {
     margin-top: 10px;
-    width: 80px;
-    height: 30px;
+    width: 110px;
+    height: 40px;
     border: none;
     border-radius: 8px;
-    background-color: coral;
-    color: rgb(230, 200, 200);
+    background-color: rgb(223, 85, 35);
+    color: rgb(236, 229, 229);
+    font-size: 22px;
+    transition: color 0.3s;
 }
 
 #pwd-btn:hover, #email-btn:hover {
-    background-color: rgb(188, 98, 65);
-    color: rgb(243, 236, 236);
+    background-color: rgb(135, 65, 39);
+    color: rgb(255, 255, 255);
 }
 
 input {
-    height: 28px;
-    width: 200px;
+    height: 32px;
+    width: 220px;
     border-radius: 8px;
     border: none;
     background-color: cornflowerblue;
-    font-size: 15px;
+    font-size: 20px;
+}
+
+#new-email {
+    width: 330px;
 }
 
 #pwd-msg-display, #email-msg-display {
@@ -68,4 +81,8 @@ input {
     margin-top: 15px;
     margin-left: 30px;
     color: rgb(249, 111, 124);
+}
+
+#settings {
+    color: #39f0cc;
 }

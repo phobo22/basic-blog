@@ -10,17 +10,7 @@ const msgDisplay = document.getElementById("msg-display");
 const urlParams = new URLSearchParams(location.search);
 const token = urlParams.get("token");
 
-// async function verifyToken(token) {
-//     const response = await fetch(`../../src/recovery/recovery_handler.php?token=${encodeURIComponent(token)}`, {
-//         method: "GET", 
-//     })
-
-//     if (!response.ok) {
-//         throw new Error("Error when calling API checking token");
-//     }
-//     return response.json();
-// }
-
+// check token valid or not
 async function checkToken(token) {
     const response = await fetch(`../../src/recovery/recovery_handler.php?token=${token}`, {
         method: "GET", 
@@ -39,7 +29,9 @@ async function checkToken(token) {
     }
 }
 
+// if access url without token
 if (!token) {
+    // display the email form
     emailForm.style.display = "flex";
     emailForm.addEventListener("submit", async (event) => {
         event.preventDefault();
@@ -60,7 +52,7 @@ if (!token) {
             sendMsgEle.innerText = error;
         }
     })
-} else {
+} else { // access url with token
     try {
         checkToken(token);
     } catch (error) {
@@ -90,6 +82,8 @@ recoverForm.addEventListener("submit", async (event) => {
             recoverForm.style.display = "none";
             msgDisplay.style.display = "block";
             msgDisplay.innerHTML = `<p class="success">${data["msg"]}</p>`;
+        } else {
+            recoverMsgEle.innerText = data["msg"];
         }
     } catch (error) {
         recoverMsgEle.innerText = error;

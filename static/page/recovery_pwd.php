@@ -29,7 +29,7 @@
         <button type="submit" id="recover-btn" name="recover-btn" value="recover">Recover Password</button>
     </form>
 
-    <div id="msg-display" style="display:none">asdasd</div>
+    <div id="msg-display" style="display:none"></div>
     <script src="../js/recovery_pwd.js"></script>
 </body>
 </html>
